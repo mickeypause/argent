@@ -38,15 +38,7 @@
 
   // Host tools spawned by name, never npm packages. `skills` is the npm CLI
   // that `npx` fetches on demand, deliberately not a dependency.
-  "ignoreBinaries": [
-    "ffmpeg",
-    "ffprobe",
-    "jq",
-    "locale",
-    "netstat",
-    "skills",
-    "xctrace",
-  ],
+  "ignoreBinaries": ["ffmpeg", "ffprobe", "jq", "locale", "netstat", "skills", "xctrace"],
 
   "workspaces": {
     // Knip finds the root scripts on its own — via package.json `scripts`, the
