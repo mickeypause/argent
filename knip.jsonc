@@ -43,13 +43,8 @@
     "ffprobe",
     "jq",
     "locale",
-    "mkfifo",
     "netstat",
-    "pgrep",
-    "pkill",
-    "plutil",
     "skills",
-    "tail",
     "xctrace",
   ],
 
