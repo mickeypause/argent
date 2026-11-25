@@ -1,0 +1,620 @@
+{
+  "alertVisible": false,
+  "screenFrame": {
+    "width": 402,
+    "height": 874
+  },
+  "interfaceOrientation": "portrait",
+  "nodes": [
+    {
+      "elementType": 1,
+      "label": "MenuFixture",
+      "frame": {
+        "y": 0,
+        "x": 0,
+        "width": 1,
+        "height": 1
+      },
+      "bundleId": "com.argent.menufixture",
+      "index": 0
+    },
+    {
+      "elementType": 2,
+      "frame": {
+        "y": 0,
+        "x": 0,
+        "width": 1,
+        "height": 1
+      },
+      "parentIndex": 0,
+      "index": 1
+    },
+    {
+      "elementType": 0,
+      "frame": {
+        "y": 0,
+        "x": 0,
+        "width": 1,
+        "height": 1
+      },
+      "parentIndex": 1,
+      "index": 2
+    },
+    {
+      "elementType": 0,
+      "frame": {
+        "y": 0,
+        "x": 0,
+        "width": 1,
+        "height": 1
+      },
+      "parentIndex": 1,
+      "index": 3
+    },
+    {
+      "elementType": 0,
+      "frame": {
+        "y": 0,
+        "x": 0,
+        "width": 1,
+        "height": 1
+      },
+      "parentIndex": 3,
+      "index": 4
+    },
+    {
+      "elementType": 0,
+      "frame": {
+        "y": 0,
+        "x": 0,
+        "width": 1,
+        "height": 1
+      },
+      "parentIndex": 4,
+      "index": 5
+    },
+    {
+      "elementType": 0,
+      "frame": {
+        "y": 0.4206712433257056,
+        "x": 0.36484245439469315,
+        "width": 0.27114427860696516,
+        "height": 0.15903890160183065
+      },
+      "parentIndex": 5,
+      "index": 6
+    },
+    {
+      "traits": ["staticText"],
+      "accessible": true,
+      "elementType": 48,
+      "frame": {
+        "y": 0.4206712433257056,
+        "x": 0.36484245439469315,
+        "width": 0.27114427860696516,
+        "height": 0.04652936689549957
+      },
+      "label": "Activity",
+      "parentIndex": 6,
+      "index": 7
+    },
+    {
+      "traits": ["button"],
+      "accessible": true,
+      "elementType": 9,
+      "frame": {
+        "y": 0.49466056445461476,
+        "x": 0.36484245439469315,
+        "width": 0.27114427860696516,
+        "height": 0.034324942791762014
+      },
+      "label": "UIKit menu",
+      "parentIndex": 6,
+      "index": 8
+    },
+    {
+      "elementType": 48,
+      "label": "UIKit menu",
+      "frame": {
+        "y": 0.5015255530129672,
+        "x": 0.4063018242122719,
+        "width": 0.1890547263681593,
+        "height": 0.020594965675057208
+      },
+      "parentIndex": 8,
+      "traits": ["staticText"],
+      "index": 9
+    },
+    {
+      "elementType": 0,
+      "frame": {
+        "y": 0.5564454614797864,
+        "x": 0.36484245439469315,
+        "width": 0.27114427860696516,
+        "height": 0.023264683447749852
+      },
+      "parentIndex": 6,
+      "index": 10
+    },
+    {
+      "elementType": 0,
+      "frame": {
+        "y": 0.5564454614797864,
+        "x": 0.36484245439469315,
+        "width": 0.27114427860696516,
+        "height": 0.023264683447749852
+      },
+      "parentIndex": 10,
+      "index": 11
+    },
+    {
+      "traits": ["button"],
+      "accessible": true,
+      "elementType": 14,
+      "frame": {
+        "y": 0.5564454614797864,
+        "x": 0.37728026533996684,
+        "width": 0.2462686567164179,
+        "height": 0.023264683447749852
+      },
+      "label": "More actions",
+      "parentIndex": 11,
+      "index": 12
+    },
+    {
+      "elementType": 9,
+      "frame": {
+        "y": 0.5564454614797864,
+        "x": 0.37728026533996684,
+        "width": 0.2462686567164179,
+        "height": 0.023264683447749852
+      },
+      "parentIndex": 12,
+      "traits": ["button"],
+      "index": 13
+    },
+    {
+      "traits": ["staticText"],
+      "accessible": true,
+      "elementType": 48,
+      "frame": {
+        "y": 0.5564454614797864,
+        "x": 0.37728026533996684,
+        "width": 0.2462686567164179,
+        "height": 0.023264683447749852
+      },
+      "label": "More actions",
+      "parentIndex": 13,
+      "index": 14
+    },
+    {
+      "elementType": 0,
+      "frame": {
+        "y": 0,
+        "x": 0,
+        "width": 1,
+        "height": 1
+      },
+      "parentIndex": 1,
+      "index": 15
+    },
+    {
+      "elementType": 0,
+      "frame": {
+        "y": 0,
+        "x": 0,
+        "width": 1,
+        "height": 1
+      },
+      "parentIndex": 15,
+      "index": 16
+    },
+    {
+      "elementType": 0,
+      "frame": {
+        "y": 0.364607170099161,
+        "x": 0.18905472636815923,
+        "width": 0.6218905472636815,
+        "height": 0.2151029748283753
+      },
+      "parentIndex": 16,
+      "index": 17
+    },
+    {
+      "elementType": 0,
+      "frame": {
+        "y": 0.364607170099161,
+        "x": 0.18905472636815923,
+        "width": 0.6218905472636815,
+        "height": 0.2151029748283753
+      },
+      "parentIndex": 17,
+      "index": 18
+    },
+    {
+      "elementType": 0,
+      "frame": {
+        "y": 0.364607170099161,
+        "x": 0.18905472636815923,
+        "width": 0.6218905472636815,
+        "height": 0.2151029748283753
+      },
+      "parentIndex": 18,
+      "index": 19
+    },
+    {
+      "elementType": 0,
+      "frame": {
+        "y": 0.364607170099161,
+        "x": 0.18905472636815923,
+        "width": 0.6218905472636815,
+        "height": 0.2151029748283753
+      },
+      "parentIndex": 19,
+      "index": 20
+    },
+    {
+      "roleDescription": "Group",
+      "frame": {
+        "y": 0.364607170099161,
+        "x": 0.18905472636815923,
+        "width": 0.6218905472636815,
+        "height": 1
+      },
+      "elementType": 32,
+      "parentIndex": 19,
+      "index": 21
+    },
+    {
+      "elementType": 75,
+      "frame": {
+        "y": 0.37604881769641496,
+        "x": 0.18905472636815923,
+        "width": 0.6218905472636815,
+        "height": 0.04805491990846682
+      },
+      "parentIndex": 21,
+      "index": 22
+    },
+    {
+      "traits": ["button"],
+      "accessible": true,
+      "frame": {
+        "y": 0.37604881769641496,
+        "x": 0.18905472636815923,
+        "width": 0.6218905472636815,
+        "height": 0.04805491990846682
+      },
+      "elementType": 9,
+      "identifier": "trash",
+      "label": "Delete",
+      "parentIndex": 22,
+      "index": 23
+    },
+    {
+      "traits": ["image"],
+      "frame": {
+        "y": 0.387490465293669,
+        "x": 0.2653399668325042,
+        "width": 0.0472636815920398,
+        "height": 0.024408848207475187
+      },
+      "elementType": 43,
+      "identifier": "trash",
+      "label": "trash",
+      "parentIndex": 23,
+      "index": 24
+    },
+    {
+      "elementType": 75,
+      "frame": {
+        "y": 0.4241037376048818,
+        "x": 0.18905472636815923,
+        "width": 0.6218905472636815,
+        "height": 0.04805491990846682
+      },
+      "parentIndex": 21,
+      "index": 25
+    },
+    {
+      "traits": ["button"],
+      "accessible": true,
+      "frame": {
+        "y": 0.4241037376048818,
+        "x": 0.18905472636815923,
+        "width": 0.6218905472636815,
+        "height": 0.04805491990846682
+      },
+      "elementType": 9,
+      "identifier": "crop",
+      "label": "Crop activity",
+      "parentIndex": 25,
+      "index": 26
+    },
+    {
+      "traits": ["image"],
+      "frame": {
+        "y": 0.4366895499618612,
+        "x": 0.2611940298507463,
+        "width": 0.05555555555555551,
+        "height": 0.02402745995423341
+      },
+      "elementType": 43,
+      "identifier": "crop",
+      "label": "crop",
+      "parentIndex": 26,
+      "index": 27
+    },
+    {
+      "elementType": 75,
+      "frame": {
+        "y": 0.4721586575133486,
+        "x": 0.18905472636815923,
+        "width": 0.6218905472636815,
+        "height": 0.04805491990846682
+      },
+      "parentIndex": 21,
+      "index": 28
+    },
+    {
+      "traits": ["button"],
+      "accessible": true,
+      "frame": {
+        "y": 0.4721586575133486,
+        "x": 0.18905472636815923,
+        "width": 0.6218905472636815,
+        "height": 0.04805491990846682
+      },
+      "elementType": 9,
+      "identifier": "pencil",
+      "label": "Edit",
+      "parentIndex": 28,
+      "index": 29
+    },
+    {
+      "traits": ["image"],
+      "frame": {
+        "y": 0.4874141876430206,
+        "x": 0.2669983416252073,
+        "width": 0.04311774461028195,
+        "height": 0.018306636155606407
+      },
+      "elementType": 43,
+      "identifier": "pencil",
+      "label": "edit",
+      "parentIndex": 29,
+      "index": 30
+    },
+    {
+      "elementType": 75,
+      "frame": {
+        "y": 0.5202135774218154,
+        "x": 0.18905472636815923,
+        "width": 0.6218905472636815,
+        "height": 0.04805491990846682
+      },
+      "parentIndex": 21,
+      "index": 31
+    },
+    {
+      "traits": ["button"],
+      "accessible": true,
+      "frame": {
+        "y": 0.5202135774218154,
+        "x": 0.18905472636815923,
+        "width": 0.6218905472636815,
+        "height": 0.04805491990846682
+      },
+      "elementType": 9,
+      "identifier": "square.and.arrow.up",
+      "label": "Share",
+      "parentIndex": 31,
+      "index": 32
+    },
+    {
+      "traits": ["image"],
+      "frame": {
+        "y": 0.5301296720061022,
+        "x": 0.2653399668325042,
+        "width": 0.0472636815920398,
+        "height": 0.025934401220442497
+      },
+      "elementType": 43,
+      "identifier": "square.and.arrow.up",
+      "label": "Share",
+      "parentIndex": 32,
+      "index": 33
+    },
+    {
+      "traits": ["adjustable"],
+      "elementType": 0,
+      "frame": {
+        "y": 0.398932112890923,
+        "x": 0.7288557213930348,
+        "width": 0.07462686567164178,
+        "height": 0.14645308924485126
+      },
+      "label": "Vertical scroll bar, 1 page",
+      "value": "0%",
+      "parentIndex": 21,
+      "index": 34
+    },
+    {
+      "elementType": 0,
+      "frame": {
+        "y": 0.4023646071700992,
+        "x": 0.7960199004975125,
+        "width": 0.007462686567164179,
+        "height": 0.13958810068649885
+      },
+      "parentIndex": 34,
+      "index": 35
+    },
+    {
+      "traits": ["adjustable"],
+      "elementType": 0,
+      "frame": {
+        "y": 0.507627765064836,
+        "x": 0.18905472636815923,
+        "width": 0.6218905472636815,
+        "height": 0.034324942791762014
+      },
+      "label": "Horizontal scroll bar, 1 page",
+      "value": "0%",
+      "parentIndex": 21,
+      "index": 36
+    },
+    {
+      "elementType": 0,
+      "frame": {
+        "y": 0.5385202135774219,
+        "x": 0.19651741293532343,
+        "width": 0.6069651741293532,
+        "height": 0.003432494279176201
+      },
+      "parentIndex": 36,
+      "index": 37
+    },
+    {
+      "traits": ["adjustable"],
+      "elementType": 0,
+      "frame": {
+        "y": 0.398932112890923,
+        "x": 0.7288557213930348,
+        "width": 0.07462686567164178,
+        "height": 0.14645308924485126
+      },
+      "label": "Vertical scroll bar, 1 page",
+      "value": "0%",
+      "parentIndex": 21,
+      "index": 38
+    },
+    {
+      "elementType": 0,
+      "frame": {
+        "y": 0.4023646071700992,
+        "x": 0.7960199004975125,
+        "width": 0.007462686567164179,
+        "height": 0.13958810068649885
+      },
+      "parentIndex": 38,
+      "index": 39
+    },
+    {
+      "traits": ["adjustable"],
+      "elementType": 0,
+      "frame": {
+        "y": 0.507627765064836,
+        "x": 0.18905472636815923,
+        "width": 0.6218905472636815,
+        "height": 0.034324942791762014
+      },
+      "label": "Horizontal scroll bar, 1 page",
+      "value": "0%",
+      "parentIndex": 21,
+      "index": 40
+    },
+    {
+      "elementType": 0,
+      "frame": {
+        "y": 0.5385202135774219,
+        "x": 0.19651741293532343,
+        "width": 0.6069651741293532,
+        "height": 0.003432494279176201
+      },
+      "parentIndex": 40,
+      "index": 41
+    },
+    {
+      "elementType": 0,
+      "frame": {
+        "y": 0.364607170099161,
+        "x": 0.18905472636815923,
+        "width": 0.6218905472636815,
+        "height": 0.2151029748283753
+      },
+      "parentIndex": 18,
+      "index": 42
+    },
+    {
+      "elementType": 0,
+      "frame": {
+        "y": 0.364607170099161,
+        "x": 0.18905472636815923,
+        "width": 0.6218905472636815,
+        "height": 0.2151029748283753
+      },
+      "parentIndex": 42,
+      "index": 43
+    },
+    {
+      "elementType": 0,
+      "frame": {
+        "y": 0.364607170099161,
+        "x": 0.18905472636815923,
+        "width": 0.6218905472636815,
+        "height": 0.2151029748283753
+      },
+      "parentIndex": 43,
+      "index": 44
+    },
+    {
+      "elementType": 0,
+      "frame": {
+        "y": 0.364607170099161,
+        "x": 0.18905472636815923,
+        "width": 0.6218905472636815,
+        "height": 0.2151029748283753
+      },
+      "parentIndex": 44,
+      "index": 45
+    },
+    {
+      "elementType": 0,
+      "frame": {
+        "y": 0.364607170099161,
+        "x": 0.18905472636815923,
+        "width": 0.6218905472636815,
+        "height": 0.2151029748283753
+      },
+      "parentIndex": 45,
+      "index": 46
+    },
+    {
+      "elementType": 0,
+      "frame": {
+        "y": 0.364607170099161,
+        "x": 0.18905472636815923,
+        "width": 0.6218905472636815,
+        "height": 0.05034324942791762
+      },
+      "parentIndex": 46,
+      "index": 47
+    },
+    {
+      "elementType": 0,
+      "frame": {
+        "y": 0.364607170099161,
+        "x": 0.18905472636815923,
+        "width": 0.6218905472636815,
+        "height": 0.2151029748283753
+      },
+      "parentIndex": 44,
+      "index": 48
+    },
+    {
+      "elementType": 0,
+      "frame": {
+        "y": 0.364607170099161,
+        "x": 0.18905472636815923,
+        "width": 0.6218905472636815,
+        "height": 0.05034324942791762
+      },
+      "parentIndex": 48,
+      "index": 49
+    }
+  ],
+  "truncated": false,
+  "foregroundApp": "com.argent.menufixture",
+  "treeVersion": 3
+}
