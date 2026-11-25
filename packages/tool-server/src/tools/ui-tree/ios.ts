@@ -1,5 +1,11 @@
 import type { DeviceInfo, Registry } from "@argent/registry";
-import { axServiceRef, type AXServiceApi, type AXTreeResponse } from "../../blueprints/ax-service";
+import {
+  axServiceRef,
+  type AXDescribeResponse,
+  type AXServiceApi,
+  type AXTreeNode,
+  type AXTreeResponse,
+} from "../../blueprints/ax-service";
 import type { DescribeFrame } from "../describe/contract";
 import { mapNativeTraitsToDescribeRole } from "../describe/platforms/ios/ios-native-adapter";
 import type { UiTree, UiTreeNode } from "./index";
@@ -128,6 +134,45 @@ function markHidden(node: UiTreeNode, clip: DescribeFrame | undefined): void {
   for (const child of node.children) markHidden(child, inner);
 }
 
+// Both commands frame an element from the same AX answer, so a shared element's frames agree.
+const SAME_FRAME = 1e-3;
+
+function sameFrame(a: DescribeFrame | undefined, b: DescribeFrame): boolean {
+  return (
+    a !== undefined &&
+    Math.abs(a.x - b.x) < SAME_FRAME &&
+    Math.abs(a.y - b.y) < SAME_FRAME &&
+    Math.abs(a.width - b.width) < SAME_FRAME &&
+    Math.abs(a.height - b.height) < SAME_FRAME
+  );
+}
+
+/**
+ * The tree's nodes plus the on-screen `describe` elements the native walk
+ * missed, such as a context menu's full-screen "Dismiss context menu" button,
+ * as children of the front app's root after its own. Neither command orders
+ * them by depth, so no node is marked covered by them. While a system alert
+ * shows, an element could belong to either root, so nothing is added.
+ */
+function withDescribeOnly(response: AXTreeResponse, described: AXDescribeResponse): AXTreeNode[] {
+  const { nodes } = response;
+  const app =
+    nodes.find((n) => n.bundleId !== undefined && n.bundleId === response.foregroundApp) ??
+    nodes[0];
+  if (!app || response.alertVisible) return nodes;
+  const role = (traits: string[] | undefined) => mapNativeTraitsToDescribeRole(traits ?? []);
+  let index = nodes.reduce((max, n) => Math.max(max, n.index), 0);
+  const added = described.elements.flatMap(({ hint: _hint, ...el }) => {
+    const { frame } = el;
+    if (!frame || frame.width <= 0 || frame.height <= 0) return [];
+    const inTree = nodes.some(
+      (n) => n.label === el.label && role(n.traits) === role(el.traits) && sameFrame(n.frame, frame)
+    );
+    return inTree ? [] : [{ ...el, index: ++index, parentIndex: app.index }];
+  });
+  return added.length > 0 ? [...nodes, ...added] : nodes;
+}
+
 /**
  * Nests the daemon's document-order nodes by `parentIndex`; a node whose parent is missing becomes a root.
  *
@@ -135,15 +180,17 @@ function markHidden(node: UiTreeNode, clip: DescribeFrame | undefined): void {
  * the UI's upright space, as `describe` does (`utils/ios-ui-orientation.ts`),
  * turned by the orientation the daemon reported with it, and the screen size
  * with it. A daemon that predates the orientation leaves both native.
+ * `described`, the same screen's `describe` answer, fills in what the walk missed.
  */
-export function adaptAxTree(response: AXTreeResponse): UiTree {
+export function adaptAxTree(response: AXTreeResponse, described?: AXDescribeResponse): UiTree {
   const orientation = response.interfaceOrientation;
   const turn = (frame: DescribeFrame | undefined): DescribeFrame | undefined =>
     frame && isTurned(orientation) ? nativeFrameToUi(frame, orientation) : frame;
   const byIndex = new Map<number, UiTreeNode>();
   const roots: UiTreeNode[] = [];
   let keyboardVisible = false;
-  for (const raw of response.nodes) {
+  const nodes = described ? withDescribeOnly(response, described) : response.nodes;
+  for (const raw of nodes) {
     const traits = raw.traits ?? [];
     const has = (name: string) => traits.includes(name);
     if (has("keyboardKey")) keyboardVisible = true;
@@ -201,5 +248,7 @@ export async function readIosUiTree(registry: Registry, device: DeviceInfo): Pro
   const ax = await registry.resolveService<AXServiceApi>(ref.urn, ref.options);
   const response = await ax.tree();
   noteUiOrientation(device.id, response.interfaceOrientation, response.screenFrame);
-  return adaptAxTree(response);
+  // The tree stands without it: a failed describe adds nothing.
+  const described = await ax.describe().catch(() => undefined);
+  return adaptAxTree(response, described);
 }

@@ -1,6 +1,26 @@
+import * as fs from "node:fs";
+import * as path from "node:path";
 import { describe, it, expect } from "vitest";
-import type { AXTreeNode, AXTreeResponse } from "../src/blueprints/ax-service";
-import { adaptAxTree } from "../src/tools/ui-tree/ios";
+import type { DeviceInfo, Registry } from "@argent/registry";
+import type {
+  AXDescribeResponse,
+  AXServiceApi,
+  AXTreeNode,
+  AXTreeResponse,
+} from "../src/blueprints/ax-service";
+import { adaptAxTree, readIosUiTree } from "../src/tools/ui-tree/ios";
+import type { UiTreeNode } from "../src/tools/ui-tree";
+
+// Recorded on an iOS 27 simulator with a SwiftUI Menu open: `describe` lists
+// the full-screen "Dismiss context menu" button, `tree` does not.
+const fixture = <T>(name: string): T =>
+  JSON.parse(fs.readFileSync(path.join(__dirname, "fixtures", "ios", name), "utf8")) as T;
+const menuTree = fixture<AXTreeResponse>("context-menu-tree.json");
+const menuDescribe = fixture<AXDescribeResponse>("context-menu-describe.json");
+
+function count(nodes: UiTreeNode[]): number {
+  return nodes.reduce((n, node) => n + 1 + count(node.children), 0);
+}
 
 function reply(nodes: AXTreeNode[], extra: Partial<AXTreeResponse> = {}): AXTreeResponse {
   return {
@@ -206,5 +226,45 @@ describe("ui-tree iOS adapter", () => {
     };
     tree.roots.forEach(walk);
     expect(hidden).toEqual(["below", "row clipped", "inside clipped"]);
+  });
+
+  it("adds on-screen elements that describe lists and tree lacks, last in the app's root", () => {
+    const tree = adaptAxTree(menuTree, menuDescribe);
+    expect(tree.roots).toHaveLength(1);
+    const [app] = tree.roots;
+    expect(app!.bundleId).toBe("com.argent.menufixture");
+    expect(count(tree.roots)).toBe(menuTree.nodes.length + 1);
+    expect(app!.children.at(-1)).toEqual({
+      role: "AXButton",
+      label: "Dismiss context menu",
+      traits: ["button"],
+      frame: { x: 0, y: 0, width: 1, height: 1 },
+      children: [],
+    });
+  });
+
+  it("leaves the tree as it is when describe adds nothing", () => {
+    const plain = adaptAxTree(menuTree);
+    const onlyShared: AXDescribeResponse = {
+      ...menuDescribe,
+      elements: menuDescribe.elements.filter((e) => e.label !== "Dismiss context menu"),
+    };
+    expect(adaptAxTree(menuTree, onlyShared)).toEqual(plain);
+    expect(adaptAxTree(menuTree, { ...menuDescribe, elements: [] })).toEqual(plain);
+    // While a system alert shows, an element could belong to either root.
+    const alert = { ...menuTree, alertVisible: true };
+    expect(adaptAxTree(alert, menuDescribe)).toEqual(adaptAxTree(alert));
+  });
+
+  it("reads the tree when describe fails", async () => {
+    const ax = {
+      tree: async () => menuTree,
+      describe: async () => {
+        throw new Error("ax-service describe error");
+      },
+    } as unknown as AXServiceApi;
+    const registry = { resolveService: async () => ax } as unknown as Registry;
+    const device = { id: "SIM-1", platform: "ios", kind: "simulator" } as DeviceInfo;
+    expect(await readIosUiTree(registry, device)).toEqual(adaptAxTree(menuTree));
   });
 });
